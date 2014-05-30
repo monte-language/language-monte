@@ -2,6 +2,10 @@
   "name": "language-monte",
   "version": "0.1.0",
   "description": "Monte language support in Atom",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/monte-language/language-monte"
+  },
   "license": "MIT",
   "engines": {
     "atom": ">0.50.0"
