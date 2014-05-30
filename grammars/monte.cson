@@ -1,0 +1,174 @@
+'fileTypes': [
+  'mt'
+]
+'name': 'Monte'
+'patterns': [
+  {
+    'match': '#.*$'
+    'name': 'comment.line.number-sign.monte'
+  }
+  {
+    'begin': '\\b(def)\\s+([a-zA-Z_][a-zA-Z0-9_]*)\\s*\\('
+    'beginCaptures':
+      '1':
+        'name': 'storage.type.function.monte'
+      '2':
+        'name': 'entity.name.function.monte'
+    'end': '\\)\\s*:|\\{'
+  }
+  {
+    'begin': '\\b(to)\\s+([a-zA-Z_][a-zA-Z0-9_]*)\\s*\\('
+    'beginCaptures':
+      '1':
+        'name': 'storage.type.method.monte storage.type.function.monte'
+      '2':
+        'name': 'entity.name.method.monte entity.name.function.monte'
+    'end': '\\)\\s*:'
+  }
+  {
+    'match': '\\b(if|else|match|switch|while)\\b'
+    'name': 'keyword.control.flow.conditional.monte'
+  }
+  {
+    'match': '\\b(for|while)\\b'
+    'name': 'keyword.control.flow.loop.monte'
+  }
+  {
+    'match': '\\b(try|catch|escape|finally)\\b'
+    'name': 'keyword.control.flow.exception.monte'
+  }
+  {
+    'match': '\\b(return|break|continue|exit)\\b'
+    'name': 'keyword.control.flow.ejectors.monte'
+  }
+  {
+    'match': '\\b(as)\\b'
+    'name': 'keyword.operator.monte'
+  }
+  {
+    'match': '\\b(in|pass)\\b'
+    'name': 'keyword.other.monte'
+  }
+  {
+    'match': '\\b(extends|guards|implements|via)\\b'
+    'name': 'storage.modifier.monte'
+  }
+  {
+    'match': '\\b(method|fn|to)\\b'
+    'name': 'storage.type.function.monte'
+  }
+  {
+    'match': '\\b(interface|object)\\b'
+    'name': 'storage.type.object.monte'
+  }
+  {
+    'match': '\\b(def)\\b'
+    'name': 'storage.type.immutable.monte'
+  }
+  {
+    'match': '\\b(var)\\b'
+    'name': 'storage.type.mutable.monte'
+  }
+  {
+    'match': '\\b(any|boolean|char|float|int|void)\\b'
+    'name': 'storage.modifier.guard.monte'
+  }
+  {
+    'comment': 'Literal constants'
+    'match': '\\b(true|false|null)\\b'
+    'name': 'constant.language.monte'
+  }
+  {
+    'comment': 'Literal floats'
+    'match': '\\b([0-9]+\\.([0-9]+)?)|(([0-9]+)\\.[0-9]+)\\b'
+    'name': 'constant.numeric.float.monte'
+  }
+  {
+    'comment': 'Literal ints'
+    'match': '\\b([0-9]+|0x[0-9a-fA-F]+)\\b'
+    'name': 'constant.numeric.integer.monte'
+  }
+  {
+    'begin': '(")'
+    'beginCaptures':
+      '0':
+        'name': 'punctuation.definition.string.begin.monte'
+    'comment': 'Literal double quoted strings'
+    'end': '(?<!\\\\)(")'
+    'endCaptures':
+      '0':
+        'name': 'punctuation.definition.string.end.monte'
+    'name': 'string.quoted.double.monte'
+  }
+  {
+    'begin': '\''
+    'beginCaptures':
+      '0':
+        'name': 'punctuation.definition.string.begin.monte'
+    'comment': 'Literal single quoted strings'
+    'end': '(?<!\\\\)\''
+    'endCaptures':
+      '0':
+        'name': 'punctuation.definition.string.end.monte'
+    'name': 'string.quoted.single.monte'
+  }
+  {
+    'begin': '`'
+    'beginCaptures':
+      '0':
+        'name': 'punctuation.definition.string.begin.monte'
+    'end': '`'
+    'endCaptures':
+      '0':
+        'name': 'punctuation.definition.string.end.monte'
+    'name': 'string.quoted.backtick.monte'
+    'patterns': [
+      {
+        'match': '[$@]\\w+'
+        'name': 'variable.other.monte'
+      }
+      {
+        'begin': '[$@]{'
+        'end': '}'
+        'name': 'variable.other.monte'
+      }
+    ]
+  }
+  {
+    'match': '\\*\\*|\\*|//|/|%%|%|\\+|\\-|<<|>>|\\.\\.!|\\.\\.'
+    'name': 'keyword.operator.arithmetic.monte'
+  }
+  {
+    'match': '<=>|>=|<=|>|<|==|!='
+    'name': 'keyword.operator.comparison.monte'
+  }
+  {
+    'match': '=~|!~'
+    'name': 'keyword.operator.pattern.monte'
+  }
+  {
+    'match': '&&|\\|\\|'
+    'name': 'keyword.operator.logical.monte'
+  }
+  {
+    'match': '&!|\\^|&|\\|'
+    'name': 'keyword.operator.bitwise.monte'
+  }
+  {
+    'match': ':='
+    'name': 'keyword.operator.assignment.monte'
+  }
+  {
+    'match': '(\\*\\*|\\*|//|/|%%|%|\\+|\\-|<<|>>|\\.\\.!|\\.\\.|&&|&!|&|\\|\\||\\||^)='
+    'name': 'keyword.operator.assignment.augmented'
+  }
+  {
+    'match': ' =[^~=>]'
+    'name': 'illegal.invalid.bad-assignment.monte'
+  }
+  {
+    'match': 'trace(ln)?'
+    'name': 'support.function.python'
+  }
+]
+'scopeName': 'source.monte'

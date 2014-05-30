@@ -1,0 +1,9 @@
+{
+  "name": "language-monte",
+  "version": "0.1.0",
+  "description": "Monte language support in Atom",
+  "license": "MIT",
+  "engines": {
+    "atom": ">0.50.0"
+  }
+}
