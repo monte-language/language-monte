@@ -26,7 +26,15 @@
     'end': '\\)\\s*:'
   }
   {
-    'match': '\\b(if|else|match|switch|while)\\b'
+    'match': '\\b(exports|import)\\b'
+    'name': 'keyword.import.monte'
+  }
+  {
+    'match': '\\b(via)\\b'
+    'name': 'keyword.pattern.monte'
+  }
+  {
+    'match': '\\b(if|else|match|switch)\\b'
     'name': 'keyword.control.flow.conditional.monte'
   }
   {
@@ -42,23 +50,23 @@
     'name': 'keyword.control.flow.ejectors.monte'
   }
   {
-    'match': '\\b(as)\\b'
-    'name': 'keyword.operator.monte'
+    'match': '\\b(when)\\b'
+    'name': 'keyword.control.flow.async.monte'
   }
   {
     'match': '\\b(in|pass)\\b'
     'name': 'keyword.other.monte'
   }
   {
-    'match': '\\b(extends|guards|implements|via)\\b'
+    'match': '\\b(as|extends|guards|implements)\\b'
     'name': 'storage.modifier.monte'
   }
   {
-    'match': '\\b(method|fn|to)\\b'
+    'match': '\\b(method|to)\\b'
     'name': 'storage.type.function.monte'
   }
   {
-    'match': '\\b(interface|object)\\b'
+    'match': '\\b(fn|interface|object)\\b'
     'name': 'storage.type.object.monte'
   }
   {
@@ -70,12 +78,20 @@
     'name': 'storage.type.mutable.monte'
   }
   {
-    'match': '\\b(any|boolean|char|float|int|void)\\b'
+    'match': '\\b(Any|Bool|Bytes|Char|Double|Int|Str|Void)\\b'
     'name': 'storage.modifier.guard.monte'
   }
   {
+    'match': '\\b(List|Map|NullOk|Pair|Same|Set)\\b'
+    'name': 'storage.modifier.guard.generic.monte'
+  }
+  {
+    'match': '\\b(DeepFrozen|Selfless|Transparent|SubrangeGuard)\\b'
+    'name': 'storage.modifier.guard.auditor.monte'
+  }
+  {
     'comment': 'Literal constants'
-    'match': '\\b(true|false|null)\\b'
+    'match': '\\b(true|false|null|NaN|Infinity)\\b'
     'name': 'constant.language.monte'
   }
   {
@@ -135,15 +151,19 @@
     ]
   }
   {
-    'match': '\\*\\*|\\*|//|/|%%|%|\\+|\\-|<<|>>|\\.\\.!|\\.\\.'
+    'match': '\\*\\*|\\*|//|/|%|\\+|\\-|<<|>>|\\.\\.!|\\.\\.'
     'name': 'keyword.operator.arithmetic.monte'
   }
   {
-    'match': '<=>|>=|<=|>|<|==|!='
+    'match': '<=>|>=|<=|>|<'
     'name': 'keyword.operator.comparison.monte'
   }
   {
-    'match': '=~|!~'
+    'match': '==|!='
+    'name': 'keyword.operator.equality.monte'
+  }
+  {
+    'match': '?|=~|!~'
     'name': 'keyword.operator.pattern.monte'
   }
   {
