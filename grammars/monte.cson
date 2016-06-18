@@ -60,20 +60,6 @@
     'match': '\\b(var)\\b'
     'name': 'storage.type.mutable.monte'
   }
-  # Guards. All guards have name storage.type.guard, since they are part of the
-  # type system.
-  {
-    'match': '\\b(Any|Bool|Bytes|Char|Double|Int|Str|Void)\\b'
-    'name': 'storage.type.guard.monte'
-  }
-  {
-    'match': '\\b(List|Map|NullOk|Pair|Same|Set|Vow)\\b'
-    'name': 'storage.type.guard.generic.monte'
-  }
-  {
-    'match': '\\b(DeepFrozen|Selfless|SubrangeGuard|Transparent)\\b'
-    'name': 'storage.type.guard.auditor.monte'
-  }
   # Identifiers.
   {
     'match': '::"[^"]+"'
@@ -205,6 +191,18 @@
   {
     'match': 'trace(ln)?'
     'name': 'support.function.python'
+  }
+  {
+    'match': '\\b(Any|Bool|Bytes|Char|Double|Int|Str|Void)\\b'
+    'name': 'support.type.guard.monte'
+  }
+  {
+    'match': '\\b(List|Map|NullOk|Pair|Same|Set|Vow)\\b'
+    'name': 'support.type.guard.generic.monte'
+  }
+  {
+    'match': '\\b(DeepFrozen|Selfless|SubrangeGuard|Transparent)\\b'
+    'name': 'support.type.guard.auditor.monte'
   }
   # Magic names.
   {
