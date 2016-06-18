@@ -3,27 +3,10 @@
 ]
 'name': 'Monte'
 'patterns': [
+  # Comments.
   {
     'match': '#.*$'
-    'name': 'comment.line.number-sign.monte'
-  }
-  {
-    'begin': '\\b(def)\\s+([a-zA-Z_][a-zA-Z0-9_]*)\\s*\\('
-    'beginCaptures':
-      '1':
-        'name': 'storage.type.function.monte'
-      '2':
-        'name': 'entity.name.function.monte'
-    'end': '\\)\\s*:|\\{'
-  }
-  {
-    'begin': '\\b(to)\\s+([a-zA-Z_][a-zA-Z0-9_]*)\\s*\\('
-    'beginCaptures':
-      '1':
-        'name': 'storage.type.method.monte storage.type.function.monte'
-      '2':
-        'name': 'entity.name.method.monte entity.name.function.monte'
-    'end': '\\)\\s*:'
+    'name': 'comment.line.octothorpe.monte'
   }
   {
     'match': '\\b(exports|import)\\b'
@@ -77,25 +60,34 @@
     'match': '\\b(var)\\b'
     'name': 'storage.type.mutable.monte'
   }
+  # Guards. All guards have name storage.type.guard, since they are part of the
+  # type system.
   {
     'match': '\\b(Any|Bool|Bytes|Char|Double|Int|Str|Void)\\b'
-    'name': 'storage.modifier.guard.monte'
+    'name': 'storage.type.guard.monte'
   }
   {
-    'match': '\\b(List|Map|NullOk|Pair|Same|Set)\\b'
-    'name': 'storage.modifier.guard.generic.monte'
+    'match': '\\b(List|Map|NullOk|Pair|Same|Set|Vow)\\b'
+    'name': 'storage.type.guard.generic.monte'
   }
   {
-    'match': '\\b(DeepFrozen|Selfless|Transparent|SubrangeGuard)\\b'
-    'name': 'storage.modifier.guard.auditor.monte'
+    'match': '\\b(DeepFrozen|Selfless|SubrangeGuard|Transparent)\\b'
+    'name': 'storage.type.guard.auditor.monte'
   }
+  # Literal exprs.
   {
     'comment': 'Literal constants'
-    'match': '\\b(true|false|null|NaN|Infinity)\\b'
+    'match': '\\b(true|false|null)\\b'
     'name': 'constant.language.monte'
   }
   {
+    'comment': 'Literal numeric constants'
+    'match': '\\b(NaN|Infinity)\\b'
+    'name': 'constant.numeric.monte'
+  }
+  {
     'comment': 'Literal floats'
+    # XXX this regex is missing 1e10
     'match': '\\b([0-9]+\\.([0-9]+)?)|(([0-9]+)\\.[0-9]+)\\b'
     'name': 'constant.numeric.float.monte'
   }
@@ -150,9 +142,16 @@
       }
     ]
   }
+  # Operators.
   {
+    # ** * // / % + - << >> ..! ..
     'match': '\\*\\*|\\*|//|/|%|\\+|\\-|<<|>>|\\.\\.!|\\.\\.'
     'name': 'keyword.operator.arithmetic.monte'
+  }
+  {
+    # .. ..!
+    'match': '\\.\\.!?'
+    'name': 'keyword.operator.range.monte'
   }
   {
     'match': '<=>|>=|<=|>|<'
@@ -163,15 +162,21 @@
     'name': 'keyword.operator.equality.monte'
   }
   {
-    'match': '\\?|=~|!~'
+    'match': '\\?'
     'name': 'keyword.operator.pattern.monte'
   }
   {
-    'match': '&&|\\|\\|'
+    'match': '=~|!~'
+    'name': 'keyword.operator.match-bind.monte'
+  }
+  {
+    # && || &!
+    'match': '&&|\\|\\||&!'
     'name': 'keyword.operator.logical.monte'
   }
   {
-    'match': '&!|\\^|&|\\|'
+    # ^ & |
+    'match': '\\^|&|\\|'
     'name': 'keyword.operator.bitwise.monte'
   }
   {
@@ -179,16 +184,44 @@
     'name': 'keyword.operator.assignment.monte'
   }
   {
-    'match': '(\\*\\*|\\*|//|/|%%|%|\\+|\\-|<<|>>|\\.\\.!|\\.\\.|&&|&!|&|\\|\\||\\||^)='
+    # **= *= //= /= %= += -= <<= >>= &&= &!= &= ||= |= ^=
+    'match': '(\\*\\*|\\*|//|/|%|\\+|\\-|<<|>>|&&|&!|&|\\|\\||\\||^)='
     'name': 'keyword.operator.assignment.augmented'
   }
   {
     'match': ' =[^~=>]'
     'name': 'illegal.invalid.bad-assignment.monte'
   }
+  # Safe scope.
   {
     'match': 'trace(ln)?'
     'name': 'support.function.python'
   }
+  # Magic names.
+  {
+    'match': '\\b(meta|super)\\b'
+    'name': 'variable.language.monte'
+  }
 ]
 'scopeName': 'source.monte'
+
+'unused': [
+  {
+    'begin': '\\b(def)\\s+([a-zA-Z_][a-zA-Z0-9_]*)\\s*\\('
+    'beginCaptures':
+      '1':
+        'name': 'storage.type.function.monte'
+      '2':
+        'name': 'entity.name.function.monte'
+    'end': '\\)\\s*:|\\{'
+  }
+  {
+    'begin': '\\b(to)\\s+([a-zA-Z_][a-zA-Z0-9_]*)\\s*\\('
+    'beginCaptures':
+      '1':
+        'name': 'storage.type.method.monte storage.type.function.monte'
+      '2':
+        'name': 'entity.name.method.monte entity.name.function.monte'
+    'end': '\\)\\s*:'
+  }
+]
