@@ -97,48 +97,52 @@
     'name': 'constant.numeric.integer.monte'
   }
   {
-    'begin': '(")'
-    'beginCaptures':
-      '0':
-        'name': 'punctuation.definition.string.begin.monte'
+    'begin': '"'
+    'end': '"'
     'comment': 'Literal double quoted strings'
-    'end': '(?<!\\\\)(")'
-    'endCaptures':
-      '0':
-        'name': 'punctuation.definition.string.end.monte'
     'name': 'string.quoted.double.monte'
+    'patterns': [
+      {
+        # \b \f \n \r \t \" \' \\ \x.. \u.... \U........
+        'match': '\\\\([bfnrt"\'\\\\]|x[0-9a-fA-F]{2}|u[0-9a-fA-F]{4}|U[0-9a-fA-F]{8})'
+        'name': 'constant.character.escape.monte'
+      }
+    ]
   }
   {
-    'begin': '\''
-    'beginCaptures':
-      '0':
-        'name': 'punctuation.definition.string.begin.monte'
+    # \b \f \n \r \t \" \' \\ \x.. \u.... \U........
+    'match': '\'\\\\([bfnrt"\'\\\\]|x[0-9a-fA-F]{2}|u[0-9a-fA-F]{4}|U[0-9a-fA-F]{8})\''
+    'comment': 'Literal single quoted escaped characters'
+    'name': 'constant.character.escape.monte'
+  }
+  {
+    'match': '\'.\''
     'comment': 'Literal single quoted strings'
-    'end': '(?<!\\\\)\''
-    'endCaptures':
-      '0':
-        'name': 'punctuation.definition.string.end.monte'
     'name': 'string.quoted.single.monte'
   }
+  # Quasiliterals.
   {
     'begin': '`'
-    'beginCaptures':
-      '0':
-        'name': 'punctuation.definition.string.begin.monte'
     'end': '`'
-    'endCaptures':
-      '0':
-        'name': 'punctuation.definition.string.end.monte'
-    'name': 'string.quoted.backtick.monte'
+    'name': 'string.quoted.interpolated.monte'
     'patterns': [
+      {
+        # \b \f \n \r \t \" \' \\ \x.. \u.... \U........
+        'match': '\\$\\\\([bfnrt"\'\\\\]|x[0-9a-fA-F]{2}|u[0-9a-fA-F]{4}|U[0-9a-fA-F]{8})'
+        'name': 'constant.character.escape.monte'
+      }
       {
         'match': '[$@]\\w+'
         'name': 'variable.other.monte'
       }
       {
-        'begin': '[$@]{'
-        'end': '}'
+        # XXX doesn't work right
+        'begin': '[$@]\\{'
+        'end': '\\}'
         'name': 'variable.other.monte'
+        'patterns': {
+          'include': 'source.monte'
+        }
       }
     ]
   }
