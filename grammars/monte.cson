@@ -74,6 +74,11 @@
     'match': '\\b(DeepFrozen|Selfless|SubrangeGuard|Transparent)\\b'
     'name': 'storage.type.guard.auditor.monte'
   }
+  # Identifiers.
+  {
+    'match': '::"[^"]+"'
+    'name': 'variable.other.monte'
+  }
   # Literal exprs.
   {
     'comment': 'Literal constants'
