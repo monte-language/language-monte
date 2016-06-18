@@ -1,13 +1,13 @@
 {
   "name": "language-monte",
-  "version": "0.1.1",
-  "description": "Monte language support in Atom",
+  "version": "0.1.2",
+  "description": "Syntax highlighting and IDE support for Monte",
   "repository": {
     "type": "git",
     "url": "https://github.com/monte-language/language-monte"
   },
   "license": "MIT",
   "engines": {
-    "atom": ">0.50.0"
+    "atom": "*"
   }
 }

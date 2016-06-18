@@ -163,7 +163,7 @@
     'name': 'keyword.operator.equality.monte'
   }
   {
-    'match': '?|=~|!~'
+    'match': '\\?|=~|!~'
     'name': 'keyword.operator.pattern.monte'
   }
   {
