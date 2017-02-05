@@ -161,7 +161,7 @@
     'name': 'keyword.operator.pattern.monte'
   }
   {
-    'match': '=~|!~'
+    'match': '=~|!~|=>'
     'name': 'keyword.operator.match-bind.monte'
   }
   {
